@@ -84,7 +84,7 @@ function signIn(){
         login();
     }catch(msg){
         console.log(msg)
-        customAlert(`${msg}<span class="closebtn" onclick="this.parentElement.parentElement.style.display='none'; signUp();">&#10004;</span>`,'warning');  
+        customAlert(`${msg}<span class="closebtn" onclick="this.parentElement.style.display='none'; signUp();">&#10004;</span>`,'warning');  
     }
 }
 
@@ -97,10 +97,12 @@ function login(){
 }
 
 function signUp(){
-    registerID(floID,window.location.host,privKey,privKey.getPubKeyHex(),username).then(result =>{
+    registerID(floID,window.location.host,privKey,encrypt.getPubKeyHex(privKey),username).then(result =>{
         customAlert(`Registration Successful!<br/> txid : ${result}`,'success');
         refreshAPIdata().then(result => {
             console.log(result);
+            sessionStorage.profiles = JSON.stringify(profiles);
+            sessionStorage.superNodeList = JSON.stringify(Array.from(superNodeList));
             login();
         }).catch(error => {
             console.log(error);
