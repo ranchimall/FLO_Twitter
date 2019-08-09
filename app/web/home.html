@@ -8,12 +8,12 @@
   <link rel="stylesheet" href="styles.css">
   <!-- Font Awesome File -->
 
-  <script type="text/javascript" src="registerID.js"></script>
+  <script type="text/javascript" src="init.js"></script>
   <script type="text/javascript" src="app.js"></script>
   <script type="text/javascript" src="home.js"></script>
 </head>
 
-<body onload = "userDataStartUp();">
+<body onload = "viewHome();">
 
 <div class="navbar navbar-default navbar-static-top">
   <div class="container">
@@ -35,10 +35,13 @@
           <input type="text" class="form-control-nav" id="search" aria-describedby="search1">
           <span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
         </div>
-
+        <button class="btn btn-default btn-sm" onclick="reloadInitData()">
+          <span class="glyphicon glyphicon-refresh"> </span>
+        </button>
         <button class="btn btn-default btn-sm" onclick="logout()">
           <span class="glyphicon glyphicon-log-out"> </span> Log out
         </button>
+
       </div>
     </div>
   </div>
